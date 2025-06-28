@@ -12,15 +12,13 @@ dotenv.config();
 const app = express();
 
 // ✅ Updated CORS configuration
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://todo-frontend-ruby-delta.vercel.app",
-    ],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    "https://todo-frontend-emwvuteju-nivas-projects-03ed492c.vercel.app",
+    "http://localhost:5173" // optional, for development
+  ],
+  credentials: true
+}));
 
 // ✅ Middleware
 app.use(express.json());
