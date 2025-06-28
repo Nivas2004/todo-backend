@@ -12,12 +12,14 @@ dotenv.config();
 const app = express();
 
 // ✅ Updated CORS configuration
-app.use(
-  cors({
-    origin: "https://todo-frontend-emwvuteju-nivas-projects-03ed492c.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    "https://todo-frontend-ruby-delta.vercel.app",
+    "https://todo-frontend-emwvuteju-nivas-projects-03ed492c.vercel.app"
+  ],
+  credentials: true,
+}));
+
 // ✅ Middleware
 app.use(express.json());
 
