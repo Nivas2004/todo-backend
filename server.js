@@ -14,7 +14,10 @@ const app = express();
 // ✅ Updated CORS configuration
 app.use(
   cors({
-    origin: "https://todo-frontend-ruby-delta.vercel.app", // ✅ Vercel frontend domain
+    origin: [
+      "http://localhost:5173",
+      "https://todo-frontend-ruby-delta.vercel.app",
+    ],
     credentials: true,
   })
 );
