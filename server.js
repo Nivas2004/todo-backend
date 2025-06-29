@@ -12,7 +12,6 @@ dotenv.config();
 const app = express();
 
 // ✅ Updated CORS configuration
-
 const allowedOrigins = [
   "http://localhost:5173",
   "https://todo-frontend-nyyjdpgbq-nivas-projects-03ed492c.vercel.app",
@@ -31,9 +30,13 @@ app.use(
   })
 );
 
-
 // ✅ Middleware
 app.use(express.json());
+
+// ✅ Root test route (👈 add THIS block)
+app.get("/", (req, res) => {
+  res.send("✅ Backend is live and running!");
+});
 
 // ✅ API routes
 app.use("/api/auth", authRoutes);
