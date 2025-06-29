@@ -13,13 +13,23 @@ const app = express();
 
 // ✅ Updated CORS configuration
 
-app.use(cors({
-  origin: [
-    "https://todo-frontend-nyyjdpgbq-nivas-projects-03ed492c.vercel.app",
-    "http://localhost:5173"
-  ],
-  credentials: true,
-}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://todo-frontend-nyyjdpgbq-nivas-projects-03ed492c.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 
 // ✅ Middleware
