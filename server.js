@@ -12,22 +12,14 @@ dotenv.config();
 const app = express();
 
 // ✅ Updated CORS configuration
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      const allowedOrigins = [
-        "https://todo-frontend-ruby-delta.vercel.app",
-        "https://todo-frontend-emwvuteju-nivas-projects-03ed492c.vercel.app"
-      ];
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+
+app.use(cors({
+  origin: [
+    "https://todo-frontend-nyyjdpgbq-nivas-projects-03ed492c.vercel.app",
+    "http://localhost:5173"
+  ],
+  credentials: true,
+}));
 
 
 // ✅ Middleware
