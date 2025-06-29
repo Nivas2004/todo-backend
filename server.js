@@ -2,9 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import fs from "fs";
 import admin from "firebase-admin";
 import authRoutes from "./routes/authRoutes.js";
-import taskRoutes from "./routes/taskRoutes.js"; // your main task routes
+import taskRoutes from "./routes/taskRoutes.js";
 
 // ✅ ENV config
 dotenv.config();
@@ -33,8 +34,10 @@ app.use(
 // ✅ JSON parsing middleware
 app.use(express.json());
 
-// ✅ Firebase Admin SDK setup
-import serviceAccount from "./firebaseServiceAccount.json" assert { type: "json" };
+// ✅ Firebase Admin SDK setup using fs
+const serviceAccount = JSON.parse(
+  fs.readFileSync("./firebaseServiceAccount.json", "utf-8")
+);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
